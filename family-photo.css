@@ -4,7 +4,7 @@
   display: grid;
   place-items: center;
   background:
-    linear-gradient(rgba(255, 250, 241, .78), rgba(255, 250, 241, .86)),
+    linear-gradient(rgba(255, 250, 241, .66), rgba(255, 250, 241, .74)),
     url('family-photo.jpg') center 43% / cover no-repeat;
 }
 
@@ -33,7 +33,7 @@
     min-height: 1080px;
     padding-inline: 14px;
     background:
-      linear-gradient(rgba(255, 250, 241, .82), rgba(255, 250, 241, .90)),
+      linear-gradient(rgba(255, 250, 241, .72), rgba(255, 250, 241, .80)),
       url('family-photo.jpg') 50% center / auto 100% no-repeat;
   }
 
