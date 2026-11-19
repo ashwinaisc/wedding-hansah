@@ -49,3 +49,41 @@
   border-radius: 50%;
   background: #fffaf1;
 }
+
+.monogram .wedding-monogram,
+.closing-monogram .wedding-monogram {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(2451%) hue-rotate(301deg) brightness(91%) contrast(91%);
+}
+
+.calendar-reminder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: -25px auto 45px;
+  padding: 13px 24px;
+  border: 1px solid #eac7a6;
+  color: #fffaf1;
+  font: 500 12px 'DM Sans', Arial, sans-serif;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  transition: background .2s, color .2s, transform .2s;
+}
+
+.calendar-reminder:hover {
+  background: #fffaf1;
+  color: #73263e;
+  transform: translateY(-2px);
+}
+
+.calendar-reminder span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+@media (max-width: 700px) {
+  .calendar-reminder {
+    margin: -18px auto 38px;
+    padding: 12px 20px;
+  }
+}
