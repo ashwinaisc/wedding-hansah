@@ -77,11 +77,31 @@ function updateCountdown() {
 updateCountdown();setInterval(updateCountdown,1000);
 
 const rsvpForm = document.getElementById('rsvp-form');
-rsvpForm.addEventListener('submit', event => {
+const rsvpEndpoint = 'https://script.google.com/macros/s/AKfycbxpUiYypbq7EvVJua0eQr9CeYtKOEV4XZhBYlo0M4-cbN9CL9vG86ONZO-l1k4Rfq0x/exec';
+rsvpForm.addEventListener('submit', async event => {
   event.preventDefault();
   const name = rsvpForm.elements.name.value.trim();
   const count = rsvpForm.elements.count.value;
-  document.getElementById('rsvp-status').textContent = `Thank you, ${name}. Your RSVP for ${count} ${count === '1' ? 'guest' : 'guests'} has been noted.`;
-  rsvpForm.querySelector('button').textContent = 'RSVP received';
-  rsvpForm.querySelector('button').disabled = true;
+  const phone = rsvpForm.elements.phone.value.trim();
+  const status = document.getElementById('rsvp-status');
+  const submitButton = rsvpForm.querySelector('button');
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending RSVP…';
+  status.textContent = 'Please wait while we save your response.';
+
+  try {
+    await fetch(rsvpEndpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ name, phone, count, version: 'Hansah invitation' }),
+    });
+    status.textContent = `Thank you, ${name}. Your RSVP for ${count} ${count === '1' ? 'guest' : 'guests'} has been received.`;
+    submitButton.textContent = 'RSVP received';
+  } catch (error) {
+    status.textContent = 'We could not save your RSVP. Please check your connection and try again.';
+    submitButton.textContent = 'Send RSVP';
+    submitButton.disabled = false;
+  }
 });
