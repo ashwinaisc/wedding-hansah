@@ -70,13 +70,13 @@
 
 /* Keep the unopened invitation and its button inside short laptop screens. */
 @media (min-width:701px) and (max-height:950px) {
-  body.invitation-locked .hero {
+  .hero {
     height: 100svh !important;
     min-height: 100svh !important;
     max-height: 100svh !important;
   }
 
-  body.invitation-locked .hero .hero-content {
+  .hero .hero-content {
     transform: scale(.76);
     transform-origin: center center;
   }
@@ -87,7 +87,7 @@
 }
 
 @media (min-width:701px) and (max-height:760px) {
-  body.invitation-locked .hero .hero-content {
+  .hero .hero-content {
     transform: scale(.64);
   }
 }
