@@ -7,11 +7,11 @@ const siteFooter = document.querySelector('footer');
 const siteMain = document.querySelector('main');
 const cardCover = document.getElementById('card-cover');
 const ribbonButton = document.getElementById('untie-ribbon');
-const backgroundMusic = document.getElementById('background-music');
 const musicToggle = document.getElementById('music-toggle');
 siteMain.inert = true;
 ribbonButton.focus({ preventScroll: true });
 
+const backgroundMusic = document.getElementById('background-music');
 backgroundMusic.volume = 0.28;
 function updateMusicControl(isPlaying) {
   musicToggle.hidden = false;
