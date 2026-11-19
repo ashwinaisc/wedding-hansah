@@ -1,3 +1,4 @@
 .vercel-tools/
 .vercel/
 node_modules/
+.env*
