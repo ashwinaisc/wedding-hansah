@@ -1,0 +1,45 @@
+.family {
+  isolation: isolate;
+  min-height: 850px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(rgba(255, 250, 241, .78), rgba(255, 250, 241, .86)),
+    url('family-photo.jpg') center 43% / cover no-repeat;
+}
+
+.family::before,
+.family::after {
+  z-index: 1;
+}
+
+.family > .reveal {
+  position: relative;
+  z-index: 2;
+  width: min(1080px, 92%);
+  padding: 42px 46px;
+  border: 1px solid rgba(168, 136, 87, .45);
+  background: rgba(255, 250, 241, .68);
+  box-shadow: 0 20px 60px rgba(84, 41, 54, .12);
+  backdrop-filter: blur(3px);
+}
+
+.family-grid {
+  background: rgba(255, 250, 241, .36);
+}
+
+@media (max-width: 700px) {
+  .family {
+    min-height: 1080px;
+    padding-inline: 14px;
+    background:
+      linear-gradient(rgba(255, 250, 241, .82), rgba(255, 250, 241, .90)),
+      url('family-photo.jpg') 50% center / auto 100% no-repeat;
+  }
+
+  .family > .reveal {
+    width: 100%;
+    padding: 34px 18px;
+    background: rgba(255, 250, 241, .72);
+  }
+}
