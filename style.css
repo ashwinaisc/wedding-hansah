@@ -52,8 +52,9 @@
 .form-field input{width:100%;min-height:52px;border:1px solid #b99b7c;background:#fffaf1;color:var(--ink);border-radius:0;padding:12px 15px;font:16px var(--sans);transition:border-color .2s,box-shadow .2s}
 .form-field input::placeholder{color:#907779}
 .form-field input:focus{outline:0;border-color:var(--wine);box-shadow:0 0 0 3px #73263e20}
-.phone-control{display:grid;grid-template-columns:132px 1fr}
-.phone-control select{min-height:52px;border:1px solid #b99b7c;border-right:0;background:#fffaf1;color:var(--ink);padding:10px 12px;font:15px var(--sans);cursor:pointer}
+.phone-control{display:grid;grid-template-columns:118px minmax(0,1fr);width:100%}
+.phone-control select{width:100%;min-width:0;min-height:52px;border:1px solid #b99b7c;border-right:0;background:#fffaf1;color:var(--ink);padding:10px 8px;font:14px var(--sans);cursor:pointer}
+.phone-control input{min-width:0}
 .phone-control select:focus{outline:0;border-color:var(--wine);box-shadow:0 0 0 3px #73263e20;position:relative;z-index:1}
 .rsvp-submit{grid-column:1/-1;justify-content:center;min-height:52px}
 .rsvp-submit:disabled{background:#795d5f;cursor:default;transform:none}
