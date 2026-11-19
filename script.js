@@ -78,11 +78,25 @@ updateCountdown();setInterval(updateCountdown,1000);
 
 const rsvpForm = document.getElementById('rsvp-form');
 const rsvpEndpoint = 'https://script.google.com/macros/s/AKfycbxpUiYypbq7EvVJua0eQr9CeYtKOEV4XZhBYlo0M4-cbN9CL9vG86ONZO-l1k4Rfq0x/exec';
+const phoneInput = rsvpForm.elements.phone;
+function getValidIndianMobile() {
+  let digits = phoneInput.value.replace(/\D/g, '');
+  if (digits.length === 12 && digits.startsWith('91')) digits = digits.slice(2);
+  const isValid = /^[6-9]\d{9}$/.test(digits);
+  phoneInput.setCustomValidity(isValid ? '' : 'Enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.');
+  return isValid ? digits : null;
+}
+phoneInput.addEventListener('input', getValidIndianMobile);
 rsvpForm.addEventListener('submit', async event => {
   event.preventDefault();
+  const validatedPhone = getValidIndianMobile();
+  if (!validatedPhone) {
+    phoneInput.reportValidity();
+    return;
+  }
   const name = rsvpForm.elements.name.value.trim();
   const count = rsvpForm.elements.count.value;
-  const phone = rsvpForm.elements.phone.value.trim();
+  const phone = validatedPhone;
   const status = document.getElementById('rsvp-status');
   const submitButton = rsvpForm.querySelector('button');
 
