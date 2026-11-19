@@ -79,17 +79,28 @@ updateCountdown();setInterval(updateCountdown,1000);
 const rsvpForm = document.getElementById('rsvp-form');
 const rsvpEndpoint = 'https://script.google.com/macros/s/AKfycbxpUiYypbq7EvVJua0eQr9CeYtKOEV4XZhBYlo0M4-cbN9CL9vG86ONZO-l1k4Rfq0x/exec';
 const phoneInput = rsvpForm.elements.phone;
-function getValidIndianMobile() {
-  let digits = phoneInput.value.replace(/\D/g, '');
-  if (digits.length === 12 && digits.startsWith('91')) digits = digits.slice(2);
-  const isValid = /^[6-9]\d{9}$/.test(digits);
-  phoneInput.setCustomValidity(isValid ? '' : 'Enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.');
-  return isValid ? digits : null;
+const countryCodeInput = rsvpForm.elements.countryCode;
+function getValidInternationalMobile() {
+  const countryCode = countryCodeInput.value;
+  let nationalNumber = phoneInput.value.replace(/\D/g, '').replace(/^0+/, '');
+  if (nationalNumber.startsWith(countryCode) && phoneInput.value.trim().startsWith('+')) {
+    nationalNumber = nationalNumber.slice(countryCode.length);
+  }
+  const fullNumber = countryCode + nationalNumber;
+  const isIndian = countryCode === '91';
+  const isValid = isIndian
+    ? /^[6-9]\d{9}$/.test(nationalNumber)
+    : /^\d{8,15}$/.test(fullNumber) && nationalNumber.length >= 6;
+  phoneInput.setCustomValidity(isValid ? '' : isIndian
+    ? 'Enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.'
+    : 'Enter a valid mobile number for the selected country code.');
+  return isValid ? '+' + fullNumber : null;
 }
-phoneInput.addEventListener('input', getValidIndianMobile);
+phoneInput.addEventListener('input', getValidInternationalMobile);
+countryCodeInput.addEventListener('change', getValidInternationalMobile);
 rsvpForm.addEventListener('submit', async event => {
   event.preventDefault();
-  const validatedPhone = getValidIndianMobile();
+  const validatedPhone = getValidInternationalMobile();
   if (!validatedPhone) {
     phoneInput.reportValidity();
     return;
