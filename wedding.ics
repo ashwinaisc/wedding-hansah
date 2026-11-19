@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Hansah and Ashwin Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:20261224T103000-hansah-ashwin-wedding@wedding-invitation
+DTSTAMP:20261119T060000Z
+DTSTART:20261224T050000Z
+DTEND:20261224T070000Z
+SUMMARY:Hansah & Ashwin Wedding
+DESCRIPTION:Join us for the Holy Matrimony of Hansah Alice Roy and Ashwin Issac Shaji.
+LOCATION:JVM Convention Centre\, Seminary Road\, Vadavathoor\, Kottayam
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -56,6 +56,12 @@
 .phone-control select{width:100%;min-width:0;min-height:52px;border:1px solid #b99b7c;border-right:0;background:#fffaf1;color:var(--ink);padding:10px 8px;font:14px var(--sans);cursor:pointer}
 .phone-control input{min-width:0}
 .phone-control select:focus{outline:0;border-color:var(--wine);box-shadow:0 0 0 3px #73263e20;position:relative;z-index:1}
+.calendar-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:-25px auto 45px}
+.calendar-reminder{display:inline-flex;align-items:center;justify-content:center;gap:18px;padding:13px 24px;border:1px solid #eac7a6;color:#fffaf1;font:500 12px var(--sans);letter-spacing:1.6px;text-transform:uppercase;transition:background .2s,color .2s,transform .2s}
+.calendar-actions .calendar-reminder{margin:0}
+.calendar-reminder:hover{background:#fffaf1;color:var(--wine);transform:translateY(-2px)}
+.calendar-reminder span{font-size:18px;line-height:1}
+@media(max-width:700px){.calendar-actions{margin:-18px auto 38px;flex-direction:column;align-items:stretch;max-width:270px}.calendar-reminder{padding:12px 20px}}
 .rsvp-submit{grid-column:1/-1;justify-content:center;min-height:52px}
 .rsvp-submit:disabled{background:#795d5f;cursor:default;transform:none}
 .form-note,.rsvp-status{grid-column:1/-1;text-align:center;margin:0}
