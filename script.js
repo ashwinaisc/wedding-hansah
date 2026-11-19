@@ -46,13 +46,17 @@ ribbonButton.addEventListener('click', () => {
 });
 
 openButton.addEventListener('click', () => {
-  openButton.disabled = true;
   openButton.setAttribute('aria-expanded', 'true');
   invitationContent.hidden = false;
   siteFooter.hidden = false;
   siteHeader.removeAttribute('aria-hidden');
   document.body.classList.remove('invitation-locked');
-  requestAnimationFrame(() => document.getElementById('invitation').scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth' }));
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.getElementById('invitation').scrollIntoView({
+      behavior: reducedMotion.matches ? 'auto' : 'smooth',
+      block: 'start'
+    });
+  }));
 });
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
