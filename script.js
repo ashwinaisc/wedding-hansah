@@ -52,9 +52,11 @@ openButton.addEventListener('click', () => {
   siteHeader.removeAttribute('aria-hidden');
   document.body.classList.remove('invitation-locked');
   requestAnimationFrame(() => requestAnimationFrame(() => {
-    document.getElementById('invitation').scrollIntoView({
+    const invitationSection = document.getElementById('invitation');
+    const invitationTop = invitationSection.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: invitationTop,
       behavior: reducedMotion.matches ? 'auto' : 'smooth',
-      block: 'start'
     });
   }));
 });
