@@ -77,8 +77,8 @@
   }
 
   .hero .hero-content {
-    transform: scale(.76);
-    transform-origin: center center;
+    padding-top: 16px;
+    padding-bottom: 28px;
   }
 
   .hero .scroll-note {
@@ -88,7 +88,8 @@
 
 @media (min-width:701px) and (max-height:760px) {
   .hero .hero-content {
-    transform: scale(.64);
+    transform: scale(.82);
+    transform-origin: center center;
   }
 }
 
