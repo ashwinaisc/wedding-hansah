@@ -5,7 +5,12 @@
 .closed-card:after{content:'';position:absolute;inset:20px;border:1px solid #a8885768;pointer-events:none}
 .closed-card-art{position:absolute;inset:0;background:linear-gradient(#fffaf138,#fffaf138),url('florals.png') center/cover no-repeat}
 .closed-card-copy{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:30px;background:radial-gradient(ellipse,#fffaf1e8 0 25%,#fffaf1a0 48%,transparent 70%)}
-.closed-card-copy .eyebrow{margin-bottom:25px}
+.closed-card-copy{--cover-name-size:clamp(42px,min(9vw,16svh),112px);--cover-seal-gap:128px}
+.closed-card-copy .closed-card-names{font-size:var(--cover-name-size)}
+.closed-card-names i{height:var(--cover-seal-gap);overflow:hidden;opacity:0}
+.closed-card-copy .closed-card-names i{margin:0}
+.closed-card-copy .closed-card-date{position:absolute;top:calc(50% + var(--cover-seal-gap)/2 + var(--cover-name-size)*.9 + 16px);left:0;right:0;margin:0}
+@media(max-width:700px){.closed-card-copy{--cover-name-size:clamp(42px,min(18vw,15svh),88px);--cover-seal-gap:112px}}
 .closed-card-names{margin:0;font:600 clamp(58px,9vw,112px)/.9 var(--serif);letter-spacing:-3px}
 .closed-card-names i{display:block;margin:14px 0;color:#ad795d;font-size:.48em;font-weight:400}
 .closed-card-date{margin:30px 0 0;font-size:12px;letter-spacing:4px}
